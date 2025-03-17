@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -14,10 +15,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -31,14 +31,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.projetoum.R
+import androidx.compose.ui.*
 import com.example.projetoum.ui.theme.ProjetoUmTheme
 
 class MainActivity : ComponentActivity() {
@@ -83,20 +84,20 @@ class MainActivity : ComponentActivity() {
             Spacer(modifier = Modifier.height(50.dp))
 
             Column(Modifier.padding(16.dp)) {
-            Text(
-                text = "gato medieval com espada encantada",
-                fontSize = 18.sp,
-                fontWeight = FontWeight(700),
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis
-            )
+                Text(
+                    text = "gato medieval com espada encantada",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight(700),
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis
+                )
 
-            Text(
-                text = "gato medieval com espada encantada",
-                Modifier.padding(top = 8.dp),
-                fontSize = 14.sp,
-                fontWeight = FontWeight(400)
-            )
+                Text(
+                    text = "gato medieval com espada encantada",
+                    Modifier.padding(top = 8.dp),
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight(400)
+                )
             }
             Spacer(modifier = Modifier.height(20.dp))
 
@@ -105,39 +106,75 @@ class MainActivity : ComponentActivity() {
                     .padding(16.dp)
                     .fillMaxWidth()
             ) {
-                var text by remember { mutableStateOf("") }
+                var text1 by remember { mutableStateOf("") }
+                var text2 by remember { mutableStateOf("") }
+                var text3 by remember { mutableStateOf("") }
+                var text4 by remember { mutableStateOf("") }
 
-                OutlinedTextField(
+                TextField(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(Color.White),
-                    value = text,
+                        .border(
+                            width = 3.dp,
+                            color = colorResource(R.color.purple_700),
+                            shape = RoundedCornerShape(5.dp)
+                        ),
+                    value = text1,
                     onValueChange = { newText ->
-                        text = newText
+                        text1 = newText
                     },
                     label = { Text("Nome") }
                 )
 
-                OutlinedTextField(
+                Spacer(modifier = Modifier.height(30.dp))
+
+                TextField(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(Color.White),
-                    value = text,
+                        .border(
+                            width = 3.dp,
+                            color = colorResource(R.color.purple_700),
+                            shape = RoundedCornerShape(5.dp)
+                        ),
+                    value = text2,
                     onValueChange = { newText ->
-                        text = newText
+                        text2 = newText
                     },
-                    label = { Text("Email") }
+                    label = { Text("Telefone") }
                 )
 
-                OutlinedTextField(
+                Spacer(modifier = Modifier.height(30.dp))
+
+                TextField(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(Color.White),
-                    value = text,
+                        .border(
+                            width = 3.dp,
+                            color = colorResource(R.color.purple_700),
+                            shape = RoundedCornerShape(5.dp)
+                        ),
+                    value = text3,
                     onValueChange = { newText ->
-                        text = newText
+                        text3 = newText
                     },
-                    label = { Text("Senha") }
+                    label = { Text("Curso") }
+                )
+
+                Spacer(modifier = Modifier.height(30.dp))
+
+                TextField(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .border(
+                            width = 3.dp,
+                            color = colorResource(R.color.purple_700),
+                            shape = RoundedCornerShape(5.dp)
+                        ),
+                    value = text4,
+                    onValueChange = { newText ->
+                        text4 = newText
+                    },
+                    label = { Text("Série") }
                 )
 
                 Button(
@@ -146,7 +183,7 @@ class MainActivity : ComponentActivity() {
                         .padding(top = 20.dp)
                         .align(Alignment.CenterHorizontally)
                 ) {
-                    Text(text = "Cadastrar")
+                    Text(text = "Enviar")
                 }
             }
         }
